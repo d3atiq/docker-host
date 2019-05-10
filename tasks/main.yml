@@ -29,3 +29,11 @@
     name: docker
     state: "{% if docker.daemon is defined and docker.daemon %}started{% else %}stopped{% endif %}"
     enabled: "{% if docker.daemon is defined and docker.daemon %}yes{% else %}no{% endif %}"
+
+- name: Add users to Docker group
+  become: true
+  user:
+    name: "{{ item }}"
+    groups: docker
+    append: yes
+  with_items: "{{ docker.users }}"
