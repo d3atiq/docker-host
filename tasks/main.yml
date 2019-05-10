@@ -29,4 +29,3 @@
     name: docker
     state: "{% if docker.daemon is defined and docker.daemon } started {% else %} stopped {% endif %}"
     enabled: "{% if docker.daemon is defined and docker.daemon } yes {% else %} no {% endif %}"
-
